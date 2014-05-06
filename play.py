@@ -36,3 +36,14 @@ def play_file(path_to_file):
     stream.stop_stream()
     stream.close()
     p.terminate
+    
+def listen(path_to_file, time):
+    '''
+    listens to the mic for a specified time
+    '''
+    CHUNK = 1024
+    p = pyaudio.PyAudio()
+    wf = wave.open(path_to_file, 'w')
+    #stream = 
+    #data =
+    p.terminate
