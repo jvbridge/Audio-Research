@@ -1,30 +1,16 @@
 #!/usr/bin/python
-import pyaudio
-import wave
-import sys
+'''
+Created on May 6, 2014
 
-CHUNK = 1024
+@author: jonathan
+'''
 
-if len(sys.argv) < 2:
-    print("Plays a wave file.\n\nUsage: %s filename.wav" % sys.argv[0])
-    sys.exit(-1)
+if __name__ == '__main__':
+    pass
 
-wf = wave.open(sys.argv[1], 'rb')
+import play
+import os
 
-p = pyaudio.PyAudio()
+filename = os.getcwd() + "/piano2.wav"
 
-stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-                channels=wf.getnchannels(),
-                rate=wf.getframerate(),
-                output=True)
-
-data = wf.readframes(CHUNK)
-
-while data != '':
-    stream.write(data)
-    data = wf.readframes(CHUNK)
-
-stream.stop_stream()
-stream.close()
-
-p.terminate()
+play.play_file(filename)
